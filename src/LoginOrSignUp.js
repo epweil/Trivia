@@ -24,7 +24,11 @@ const LoginOrSignUp = props => {
   const setLoggedIn = props.setLoggedIn;
   const [buttonPress, setButtonPress] = useState(false);
 
-  // setLoggedIn(true);
+  // DEBUGGING CODE (DELETE BEFORE FINAL)
+  setLoggedIn(true);
+  // DEBUGGING CODE (DELETE BEFORE FINAL)
+
+  
   return (
     <View>
       {buttonPress ? (
