@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import type {Node} from 'react';
 import {View, Text, Image, ScrollView, TextInput, Button} from 'react-native';
 
 function loginUser(setLoggedIn) {

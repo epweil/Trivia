@@ -1,4 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import CountdownTimer from './gameChildren/CountdownTimer';
+import Question from './gameChildren/Question';
+import Results from './gameChildren/Results';
+
 import { View, Text, Image, ScrollView, TextInput } from 'react-native';
 
 function minutesUntilSixPM() {
@@ -36,31 +40,57 @@ const Game = () => {
   console.log(minutesUntilSixPM())
 
   // game_status can be either 'upcoming', 'happening', or 'occurred'
-  const [state, setState] = useState({game_status: null})
+  const [state, setGameState] = useState({
+    game_status: null, 
+    categories_used: {},
+    questions_so_far: 0
+  })
   // TODO
     // possible error: should this effect only run on the first render?
     // if I'm getting wierd errors, look here first as I'm not sure this is correct
   useEffect(()=> {
     let v = hasGameOccurred()
     if (v==0) {
-      setState({game_status: 'upcoming'})
+      setGameState({...state, game_status: 'upcoming'})
     }
     else if (v==1) {
-      setState({game_status: 'happening'})
+      setGameState({...state, game_status: 'happening'})
     }
     else {
-      setState({game_status: 'occurred'})
+      setGameState({...state, game_status: 'occurred'})
     }
   }, [])
   
-
-
-  return (
-    <>
-      <Text> Game component </Text>
-      <Text> Game status: {state.game_status} </Text>
-    </>
-  );
+  // decide what to render based on if game is happening, has occurred, or is upcoming
+  if (state.game_status == 'upcoming') {
+    return (
+      <>
+        <Text> Game component </Text>
+        <Text> game status: {state.game_status}</Text>
+        <CountdownTimer />
+      </>
+    );
+  }
+  else if (state.game_status == 'occurred') {
+    // TODO: add conditional logic, if the user participated in today's game
+    //       we should display their results instead of the timer
+    return (
+      <>
+        <Text> Game component </Text>
+        <Text> game status: {state.game_status}</Text>
+        <CountdownTimer />
+      </>
+    );
+  }
+  else {
+    return (
+      <>
+        <Text> Game component </Text>
+        <Text> game status: {state.game_status}</Text>
+        <Question categoriesUsed={{}} setGameState={setGameState}/>
+      </>
+    );
+  }
 };
 
 export default Game;
