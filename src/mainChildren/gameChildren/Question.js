@@ -27,10 +27,12 @@ function getRandomUnusedCategory(categoriesUsed) {
 
   // remove categories we have already used in this game from possibleCategories
   let possibleCategories = [...CATEGORIES]
-  categoriesUsed.forEach(element => {
+
+  for (let i = 0; i < categoriesUsed.length; i++) {
+    element = categoriesUsed[i]
     const index = possibleCategories.indexOf(element)
     possibleCategories.splice(index, 1)
-  });
+  }
   
   // choose and return a random unused category
   let randomCat = possibleCategories[Math.floor(Math.random()*possibleCategories.length)]
@@ -39,7 +41,8 @@ function getRandomUnusedCategory(categoriesUsed) {
 
 
 const Question = (props) => {
-
+  // function that allows us to manipulate the state of the parent Game component
+  // important: to prevent reloading, only change this state after the 10 seconds for the question has elapsed
   setGameState = props.setGameState
 
   // get list of categories that have already been used in this game (don't want to repeat)
@@ -47,6 +50,12 @@ const Question = (props) => {
   let category = getRandomUnusedCategory(categoriesUsed)
 
   // TODO TODO TODO: make API call here to get a random question of the given category
+  let question = ""
+    // quesiton should be a json object with the question and the four possible answers
+    // also we should have something that identifies which answer is correct
+
+  // TODO: after 10 seconds is elapsed, use setGameState and 
+
 
   return (
     <>

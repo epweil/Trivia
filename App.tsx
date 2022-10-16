@@ -26,7 +26,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
- import {FirestoreBackend} from "./backend/firebase/firebaseBackend";
+ // import {FirestoreBackend} from "./backend/firebase/firebaseBackend";
  import LoginOrSignUp from './src/LoginOrSignUp';
  import Main from './src/Main';
  
@@ -34,7 +34,7 @@ import {
    // state should keep track of if logged in or not
    // if it changes, the component will reload and either Login or Register will be rendered based on value of state
    const [isLoggedIn, setLoggedIn] = useState(false);
-   FirestoreBackend.setUserData({"name":"Ethan"}as UserData)
+   // FirestoreBackend.setUserData({"name":"Ethan"}as UserData)
  
    // set isLoggedIn to false (only on first time App component renders)
    useEffect(() => setLoggedIn(false), []);

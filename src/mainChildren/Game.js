@@ -48,6 +48,7 @@ const Game = () => {
   // TODO
     // possible error: should this effect only run on the first render?
     // if I'm getting wierd errors, look here first as I'm not sure this is correct
+
   useEffect(()=> {
     let v = hasGameOccurred()
     if (v==0) {
