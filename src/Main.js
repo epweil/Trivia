@@ -3,7 +3,6 @@ import { View, Text, Image, ScrollView, TextInput } from 'react-native';
 
 import Game from './mainChildren/Game';
 import Leaderboard from './mainChildren/Leaderbaord';
-import MainNavBar from './mainChildren/MainNavBar';
 import Profile from './mainChildren/Profile';
 
 const Main = () => {
